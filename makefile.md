@@ -7,6 +7,9 @@
 * 依赖：目标文件由哪些文件生成  
 * 命令：通过执行该命令由依赖文件生成目标  
 
+> 注意: makefile 默认会把第一条规则视为终极目标，所以不能随便改变makefile的顺序
+> 使用 `ALL:main` 可以改变默认情况，把main指定为终极目标
+
 #### makefile的变量
 ```
 src = add.c sub.c mul.c main.c
@@ -46,7 +49,26 @@ obj = $(patsubst %.c, %.o, $(src))
 main: $(obj)
     gcc $^ -o $@
 %.o: %.c
-    gcc -c $< -o $@
+    gcc -c $< -o $@         # 使用通配符的规则叫做“模式规则”
 clean:
-    rm -rf main $(obj)
+    -rm -rf main $(obj)     # rm前面"-"的意义: 如果rm在执行过程中报错了，忽略错误继续执行
+```
+
+#### 静态模式规则 - 终极版
+```
+src = $(wildcard *.c)
+obj = $(patsubst %.c, %.o, $(src))
+target = main
+
+ALL:$(target)
+
+$(target): $(obj)
+    gcc $^ -o $@
+$(obj):%.o:%.c
+    gcc -c $< -o $@         # 静态模式规则：只有$(obj)定义的目标才使用改模式规则
+
+clean:
+    rm -rf $(target) $(obj)
+
+.PHONY: clean
 ```
