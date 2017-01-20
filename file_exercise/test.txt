@@ -1,1 +1,6 @@
 hello putc!
+I'm the second line
+Hi, the third line
+maybe oneday, you meet me again
+You will knonw
+I'm the hero!
