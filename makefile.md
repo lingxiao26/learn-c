@@ -37,6 +37,16 @@ add.o: add.c
 ```
 /* wildcard:函数名   *.c:参数 */
 src = $(wildcard *.c)       # 找到当前目录下所有后缀为.c的文件，赋值给src
+obj = $(patsubst %.c, %.o, $(src))      # 把src变量里所有"xxx.c"的文件替换成"xxx.o", "xxx"必须严格匹配
 
-obj = $(patsubst %.c, %.o, $(src))      # 把src变量里所有`xxx.c`的文件替换成`xxx.o`, `xxx`必须严格匹配
+Example:
+src = $(wildcard *.c)
+obj = $(patsubst %.c, %.o, $(src))
+
+main: $(obj)
+    gcc $^ -o $@
+%.o: %.c
+    gcc -c $< -o $@
+clean:
+    rm -rf main $(obj)
 ```
