@@ -19,5 +19,7 @@
 3. 生成可执行程序  
   gcc main.c -o main -L库路径 -l库名 -I头文件路径  
 
+  - 注意: 此时执行main会提示未找到libmymath.so, 因为动态链接器找不到当前目录下生成的动态库，要让动态链接器找到该库，有以下方法:
+    1. export LD_LIBRARY_PATH=`PWD`
+    2. echo `pwd` > /etc/ld.conf.d/mylib.conf
 
-- 
