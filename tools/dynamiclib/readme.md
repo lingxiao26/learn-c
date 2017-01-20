@@ -12,11 +12,11 @@
 
 #### 创建步骤
 
-1. 生成链接文件 .o文件
+1. 生成链接文件 .o文件  
   gcc -fPIC -c add.c sub.c mul.c (fPIC: 生成“与位置无关”的目标文件*.o)  
-2. 生成动态库文件 .so文件
+2. 生成动态库文件 .so文件  
   gcc -shared -o libmymath.so add.o sub.o mul.o  
-3. 生成可执行程序
+3. 生成可执行程序  
   gcc main.c -o main -L库路径 -l库名 -I头文件路径  
 
 
