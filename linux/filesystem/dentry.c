@@ -22,11 +22,11 @@ int main(int argc, char *argv[])
         exit(1);
     }
     while ( (ds = readdir(dp)) != NULL ) {
-        if ( errno ) {
-            perror("Error: ");
-            exit(1);
-        }
         printf("inode: %d\tfilename: %s\n", ds->d_ino, ds->d_name);
+    }
+
+    if ( errno ) {
+        perror("Error: ");
     }
 
     return 0;
