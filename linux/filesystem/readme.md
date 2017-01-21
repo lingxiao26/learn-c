@@ -27,8 +27,8 @@
 
 #### 文件操作
 
-- stat函数  
     ```
+    stat函数  
         获取文件属性（从inode结构体中获取）  
         int stat(const *path, struct stat *buf);  
             参数1：文件名  
