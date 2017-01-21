@@ -27,7 +27,7 @@ target = $(patsubst %.c, %, $(src))
 
 ALL: $(target)
 
-$(target): $(obj)
+$(target): %: %.o
     gcc $< -o $@
 
 $(obj):%.o:%.c
