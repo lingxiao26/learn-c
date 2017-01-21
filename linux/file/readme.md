@@ -30,9 +30,6 @@ open函数常用参数:
     [block_readtty.c](./block_readtty.c)  
 
 - 非阻塞读终端  
-```
-    错误代码: EAGAIN 当使用不可阻断I/O 时（O_NONBLOCK），若无数据可读取则返回此值.   
-```
     [nonblock_readtty.c](./nonblock_readtty.c)  
 
 - 非阻塞读终端和等待超时   
