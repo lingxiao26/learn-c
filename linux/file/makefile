@@ -3,7 +3,7 @@ target = $(patsubst %.c, %, $(src))
 
 ALL: $(target)
 
-$(target): $(src)
+$(target): %: %.c
 	gcc $< -o $@
 
 clean:
