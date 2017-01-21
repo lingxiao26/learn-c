@@ -59,7 +59,7 @@ fcntl函数
         exit(1);
     }
     flags |= O_NONBLOCK;
-    ret = fcntl(STDIN_FILENO, F_SETFL);
+    ret = fcntl(STDIN_FILENO, F_SETFL, flags);
     if ( ret == -1 ) {
         perror("fcntl error: ");
         exit(1);
