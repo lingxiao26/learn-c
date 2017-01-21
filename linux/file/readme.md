@@ -25,8 +25,8 @@ open函数常用参数:
 #### 阻塞，非阻塞
 > 读常规文件是不会阻塞的，不管读多少字节，read一定会在有限的时间内返回。从终端设备或网络读则不一定
 
-　　###### 阻塞读终端
-　　[block_readtty.c](./block_readtty.c)
+- 阻塞读终端  
+    [block_readtty.c](./block_readtty.c)  
 
-　　###### 非阻塞读终端
-　　> 错误代码: EAGAIN 当使用不可阻断I/O 时（O_NONBLOCK），若无数据可读取则返回此值。
+- 非阻塞读终端  
+> 错误代码: EAGAIN 当使用不可阻断I/O 时（O_NONBLOCK），若无数据可读取则返回此值。 
