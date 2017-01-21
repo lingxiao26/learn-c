@@ -43,3 +43,25 @@ open函数常用参数:
         error != EAGAIN(或!=EWOULDBLOCK) read 出错  
     3. 返回0：读到文件末尾
 ```
+
+#### fcntl ioctl
+```
+fcntl函数
+    说明：
+        改变一个“已经打开”的文件的访问控制属性
+        重点掌握两个参数的使用，F_GETFL 和 F_SETFL
+    函数原型: int fcntl(int fd, int cmd, ... /* arg */ );
+    返回值:   -1 出错
+示例：设置标准输入为非阻塞
+    flags = fcntl(STDIN_FILENO, F_GETFL);
+    if ( flags == -1 ) {
+        perror("fcntl error: ");
+        exit(1);
+    }
+    flags |= O_NONBLOCK;
+    ret = fcntl(STDIN_FILENO, F_SETFL);
+    if ( ret == -1 ) {
+        perror("fcntl error: ");
+        exit(1);
+    }
+```
