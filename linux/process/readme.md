@@ -21,3 +21,8 @@
     11. 会话（session）和进程组（功能相近的进程构成一个进程组）
     12. 进程可以使用的资源上限（Resource Limit）.
 ```
+
+
+#### 环境变量
+
+[print_env.c](./print_env.c)
