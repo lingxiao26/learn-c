@@ -21,3 +21,5 @@
 
 [进程和进程控制](./linux/process)  
 
+[进程间通信](./linux/ipc)  
+
