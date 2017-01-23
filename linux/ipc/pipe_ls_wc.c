@@ -22,15 +22,14 @@ int main(void)
 
     pid = fork();
     if ( pid > 0 ) {                 /* 父进程 */
-        close(fd[0]);                /* 关闭读端 */
-        dup2(fd[1], STDOUT_FILENO);  /* 标准输出重定向到写端 */
-        execlp("ls", "ls", NULL);    /* 执行成功函数不会返回，所以后面的代码不会执行 */
-        close(fd[1]);                /* 关闭写端 */
-        wait(NULL);                  /* 回收子进程 */
-    } else if ( pid == 0 ) {         /* 子进程 */
         close(fd[1]);                /* 关闭写端 */
         dup2(fd[0], STDIN_FILENO);
         execlp("wc", "wc", "-l", NULL);
+
+    } else if ( pid == 0 ) {         /* 子进程 */
+        close(fd[0]);                /* 关闭读端 */
+        dup2(fd[1], STDOUT_FILENO);  /* 标准输出重定向到写端 */
+        execlp("ls", "ls", NULL);    
     }
 
     
@@ -38,5 +37,6 @@ int main(void)
     return 0;
 }
 
-/* 该程序的缺陷： 父进程执行execlp后没有返回，所以后面的wait函数不会执行 */
-/* 父子进程的退出顺序不定，所以最后执行的效果可能是shell会先输出 $PS1 */
+/* 该程序的缺陷：                              */
+/*      1. 父进程没有回收子进程                */
+/*      2. 父进程的读端和子进程的写端未关闭    */
