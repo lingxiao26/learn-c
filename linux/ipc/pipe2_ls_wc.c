@@ -25,20 +25,20 @@ int main(void)
             break;
     }
 
-    if ( 2 == i ) {                 /* 父进程 */
-        close(fd[0]);
+    if ( 2 == i ) {                     /* 父进程 */
+        close(fd[0]);                   /* 这里一定要关闭父进程的读写端，因为管道只能一个出口一个入口，否则会造成阻塞 */
         close(fd[1]);
         while ( i-- ){
             if( wait(NULL) == -1 ) {
                 perror("wait error: ");
                 exit(1);
-            }                  /* 回收子进程 */
+            }                 
         }
-    } else if ( 0 == i ) {         /* 兄进程 */
-        close(fd[0]);                /* 关闭读端 */
-        dup2(fd[1], STDOUT_FILENO);  /* 标准输出重定向到写端 */
+    } else if ( 0 == i ) {              /* 兄进程 */
+        close(fd[0]);                   /* 关闭读端 */
+        dup2(fd[1], STDOUT_FILENO);     /* 标准输出重定向到写端 */
         execlp("ls", "ls", NULL);    
-    } else if ( 1 == i){                        /* 弟进程 */
+    } else if ( 1 == i){                /* 弟进程 */
         close(fd[1]);
         dup2(fd[0], STDIN_FILENO);
         execlp("wc", "wc", "-l", NULL);
