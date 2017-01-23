@@ -15,9 +15,9 @@
 
 ## linux系统调用
 
-[文件IO系统调用](./file)  
+[文件IO系统调用](./linux/file)  
 
-[文件系统](./filesystem)  
+[文件系统](./linux/filesystem)  
 
-[进程和进程控制](./process)  
+[进程和进程控制](./linux/process)  
 
