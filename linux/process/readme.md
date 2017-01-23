@@ -61,6 +61,7 @@
     pid_t wait(int *status);
     return SUCEESS: pid  FAILED: -1
 ```
+[wait.c](./wait.c)
 
 #### waitpid函数
 
@@ -78,6 +79,7 @@
         0   回收和当前调用waitpid一个组的所有子进程
         <-1 回收指定进程组内的任意子进程
 ```
+[waitpid.c](./waitpid.c)
 
 #### 小练习
 
