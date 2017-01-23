@@ -47,3 +47,43 @@
 ```
 
   [zoom.c](./zoom.c)
+
+
+#### wait函数
+
+```
+    wait函数有三个功能：
+
+    1. 阻塞等待子进程退出
+    2. 回收子进程残留资源
+    3. 获取子进程结束状态（退出原因）
+
+    pid_t wait(int *status);
+    return SUCEESS: pid  FAILED: -1
+```
+
+#### waitpid函数
+
+```
+    跟wait函数相似，函数原型：
+
+    pid_t waitpid(pid_t pid, int *status, int options);
+    返回值：
+        SUCCESS：pid
+        FAILED： -1（无子进程）
+        0     ：参数3为 WNOHANG（非阻塞），且子进程正在运行
+    参数pid的不同取值：
+        >0  回收指定ID的子进程
+        -1  回收任意子进程（相当于wait）
+        0   回收和当前调用waitpid一个组的所有子进程
+        <-1 回收指定进程组内的任意子进程
+```
+
+#### 小练习
+
+```
+    父进程fork3个子进程，三个子进程
+    一个调用ps命令，一个调用自定义程序1（正常），一个调用自定义程序2（会出段错误）
+    父进程使用waitpid对子进程进行回收
+```
+[excercise.c](./excercise.c)
