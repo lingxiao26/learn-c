@@ -88,4 +88,4 @@
     一个调用ps命令，一个调用自定义程序1（正常），一个调用自定义程序2（会出段错误）
     父进程使用waitpid对子进程进行回收
 ```
-[excercise.c](./excercise.c)
+[exercise.c](./exercise.c)
