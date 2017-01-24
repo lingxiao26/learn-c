@@ -33,8 +33,6 @@
 
 跟pipe不同的地方是：fifo可以实现非父子兄弟进程间的通信（想象成两个不同的进程读取同一个文件-fifo文件）  
 
-```
-    int mkfifo(const char *pathname, mode_t mode);
-
-    
-```
+小示例：  
+[fifo写数据](./fifo_w.c)
+[fifo读数据](./fifo_r.c)
