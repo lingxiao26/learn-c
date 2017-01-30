@@ -25,3 +25,4 @@
 
 [信号](./linux/signal)  
 
+[进程组，会话，守护进程](./linux/session_daemon)
