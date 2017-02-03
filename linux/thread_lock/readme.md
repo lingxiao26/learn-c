@@ -8,7 +8,7 @@
        
 **所有“多个控制流共同操作一个共享资源”的情况，都需要同步**  
 
-共享资源（标准输出）无同步机制的现象 (thrd_shared.c)[thrd_shared.c]
+共享资源（标准输出）无同步机制的现象 [thrd_shared.c](thrd_shared.c)
 
      
 
